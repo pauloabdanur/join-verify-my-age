@@ -1,0 +1,15 @@
+:root {
+  --dark-grey: '#121212';
+  --white: '#FFFFFF';
+  --white-smoke: '#F8F8F8';
+  --grey: '#EDEDF1';
+  --foggy-grey: '#ACA99F';
+  --sonic-silver: '#777777';
+  --warning: '#D24340';
+  --light-yellow: '#FBC81D';
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
