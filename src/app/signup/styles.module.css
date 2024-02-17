@@ -1,17 +1,17 @@
 .container {
   display: flex;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .background {
-  height: 1090px;
-  width: 960px;
+  /* height: 100%; */
+  width: 50%;
 }
 
 .wrapper {
   margin-left: 89px;
-  height: 1090px;
-  width: 960px;
+  height: 100%;
+  width: 50%;
 }
 
 .headerContainer {
