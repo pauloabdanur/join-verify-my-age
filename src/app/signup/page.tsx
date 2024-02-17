@@ -8,6 +8,7 @@ import bgImage from '../../assets/Bg_Gray_Tones.png';
 import logo from '../../assets/Logo_small.png';
 import steps from '../../assets/Steps.png';
 import back from '../../assets/Back.png';
+import MyPhoneInput from '@/components/MyPhoneInput';
 
 export default function Home() {
   const router = useRouter();
@@ -46,8 +47,8 @@ export default function Home() {
             <span>Email</span>
           </div>
           <div className={styles.inputBox}>
-            <input type="text" placeholder="Please Type in..." />
             <span>Mobile</span>
+            <MyPhoneInput />
           </div>
           <div className={styles.inputBox}>
             <input type="password" placeholder="Please Type in..." />

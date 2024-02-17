@@ -87,6 +87,7 @@
   font-size: 12px;
   font-weight: 600;
   background: #fff;
+  z-index: 1;
 }
 
 .terms {
@@ -148,6 +149,7 @@
   font-size: 14px;
   font-weight: 600;
   color: #121212;
+  cursor: pointer;
 }
 
 .signinBtn {
@@ -160,4 +162,5 @@
   font-size: 14px;
   font-weight: 300;
   color: #121212;
+  cursor: pointer;
 }
