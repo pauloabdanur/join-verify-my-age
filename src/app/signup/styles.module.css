@@ -77,6 +77,14 @@
   color: #121212;
 }
 
+.inputBoxError input {
+  border: 1px solid red;
+}
+
+.inputBoxError span {
+  color: red;
+}
+
 .inputBox span {
   position: absolute;
   left: 0;
@@ -94,6 +102,10 @@
   margin-top: 29px;
   display: flex;
   align-items: center;
+}
+
+.termsError {
+  color: red;
 }
 
 .terms input {

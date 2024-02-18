@@ -2,7 +2,11 @@ import { useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
-const MyPhoneInput: React.FC = () => {
+interface Props {
+  error: boolean;
+}
+
+const MyPhoneInput = ({ error }: Props) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [valid, setValid] = useState(true);
 
@@ -27,7 +31,7 @@ const MyPhoneInput: React.FC = () => {
         inputStyle={{
           width: '500px',
           borderRadius: '2rem',
-          border: '1px solid #777777',
+          border: error ? '1px solid red' : '1px solid #777777',
           outline: 'none',
           fontSize: '16px',
           fontWeight: '300',

@@ -10,12 +10,33 @@ import steps from '../../assets/Steps.png';
 import back from '../../assets/Back.png';
 import MyPhoneInput from '@/components/MyPhoneInput';
 
+import { userSchema } from '@/schemas/UserSchema';
+import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+interface IFormData {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+  checkbox: boolean;
+}
+
 export default function Home() {
   const router = useRouter();
 
   const handleGoBack = () => {
     router.replace('/');
   };
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<IFormData>({ resolver: yupResolver(userSchema) });
+
+  const submit = (data: any) => console.log(data);
 
   return (
     <div className={styles.container}>
@@ -37,37 +58,93 @@ export default function Home() {
             <p>{`Let's`} start by setting up your login details</p>
           </div>
         </div>
-        <div className={styles.formContainer}>
-          <div className={styles.inputBox}>
-            <input type="text" placeholder="Please Type in..." />
-            <span>Full Name</span>
+        <form onSubmit={handleSubmit(submit)}>
+          <div className={styles.formContainer}>
+            <div
+              className={
+                errors.name
+                  ? `${styles.inputBoxError} ${styles.inputBox}`
+                  : styles.inputBox
+              }
+            >
+              <input
+                type="text"
+                placeholder="Please Type in..."
+                {...register('name', { required: true })}
+              />
+              <span>Full Name</span>
+            </div>
+            <div
+              className={
+                errors.email
+                  ? `${styles.inputBoxError} ${styles.inputBox}`
+                  : styles.inputBox
+              }
+            >
+              <input
+                type="text"
+                placeholder="Please Type in..."
+                {...register('email', { required: true })}
+              />
+              <span>Email</span>
+            </div>
+            <div
+              className={
+                errors.phone
+                  ? `${styles.inputBoxError} ${styles.inputBox}`
+                  : styles.inputBox
+              }
+            >
+              <span>Mobile</span>
+              <Controller
+                name="phone"
+                control={control}
+                rules={{ required: true }}
+                render={() => (
+                  <MyPhoneInput error={errors.phone ? true : false} />
+                )}
+              />
+            </div>
+            <div
+              className={
+                errors.password
+                  ? `${styles.inputBoxError} ${styles.inputBox}`
+                  : styles.inputBox
+              }
+            >
+              <input
+                type="password"
+                placeholder="Please Type in..."
+                {...register('password', { required: true })}
+              />
+              <span>Password</span>
+            </div>
           </div>
-          <div className={styles.inputBox}>
-            <input type="text" placeholder="Please Type in..." />
-            <span>Email</span>
+          <div
+            className={
+              errors.checkbox
+                ? `${styles.termsError} ${styles.terms}`
+                : styles.terms
+            }
+          >
+            <input
+              type="checkbox"
+              {...register('checkbox', { required: true })}
+            />
+            <p>
+              Tick this box to confirm {`you’ve`} read and agreed to our{' '}
+              <span>Terms</span> and <span> Privacy Policy</span>.
+            </p>
           </div>
-          <div className={styles.inputBox}>
-            <span>Mobile</span>
-            <MyPhoneInput />
+          <div className={styles.buttonWrapper}>
+            <button className={styles.saveBtn} type="submit">
+              Save
+            </button>
+            <button className={styles.signinBtn}>
+              Got a VerifyMyAge Acconut? Sign in
+            </button>
           </div>
-          <div className={styles.inputBox}>
-            <input type="password" placeholder="Please Type in..." />
-            <span>Password</span>
-          </div>
-        </div>
-        <div className={styles.terms}>
-          <input type="checkbox" />
-          <p>
-            Tick this box to confirm {`you’ve`} read and agreed to our{' '}
-            <span>Terms</span> and <span> Privacy Policy</span>.
-          </p>
-        </div>
-        <div className={styles.buttonWrapper}>
-          <button className={styles.saveBtn}>Save</button>
-          <button className={styles.signinBtn}>
-            Got a VerifyMyAge Acconut? Sign in
-          </button>
-        </div>
+        </form>
       </div>
     </div>
   );
