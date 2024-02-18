@@ -3,16 +3,19 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
 interface Props {
+  onChangeController: (phone: string) => void;
   error: boolean;
 }
 
-const MyPhoneInput = ({ error }: Props) => {
+const MyPhoneInput = ({ onChangeController, error }: Props) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [valid, setValid] = useState(true);
 
   const handleChange = (value: string) => {
     setPhoneNumber(value);
     setValid(validatePhoneNumber(value));
+    onChangeController(value);
+    console.log(value);
   };
 
   const validatePhoneNumber = (phoneNumber: string) => {
@@ -26,7 +29,7 @@ const MyPhoneInput = ({ error }: Props) => {
       <PhoneInput
         country={'gb'}
         value={phoneNumber}
-        onChange={handleChange}
+        onChange={(e) => handleChange(e)}
         inputProps={{ required: true }}
         inputStyle={{
           width: '500px',

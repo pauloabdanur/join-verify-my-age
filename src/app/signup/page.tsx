@@ -1,6 +1,4 @@
 'use client';
-
-import { useRouter } from 'next/navigation';
 import styles from './styles.module.css';
 import Image from 'next/image';
 
@@ -13,6 +11,7 @@ import MyPhoneInput from '@/components/MyPhoneInput';
 import { userSchema } from '@/schemas/UserSchema';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import Link from 'next/link';
 
 interface IFormData {
   name: string;
@@ -23,12 +22,6 @@ interface IFormData {
 }
 
 export default function Home() {
-  const router = useRouter();
-
-  const handleGoBack = () => {
-    router.replace('/');
-  };
-
   const {
     register,
     handleSubmit,
@@ -36,7 +29,17 @@ export default function Home() {
     formState: { errors },
   } = useForm<IFormData>({ resolver: yupResolver(userSchema) });
 
-  const submit = (data: any) => console.log(data);
+  const submit = (data: IFormData) => {
+    const userInfo = {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+    };
+
+    alert(JSON.stringify(userInfo));
+  };
+
+  console.log(errors.phone);
 
   return (
     <div className={styles.container}>
@@ -48,12 +51,9 @@ export default function Home() {
             <Image src={steps} alt="" className={styles.steps} />
           </div>
           <div className={styles.header}>
-            <Image
-              src={back}
-              alt=""
-              className={styles.backBtn}
-              onClick={handleGoBack}
-            />
+            <Link href="/">
+              <Image src={back} alt="" className={styles.backBtn} />
+            </Link>
             <h2>Join VerifyMyAge</h2>
             <p>{`Let's`} start by setting up your login details</p>
           </div>
@@ -100,8 +100,11 @@ export default function Home() {
                 name="phone"
                 control={control}
                 rules={{ required: true }}
-                render={() => (
-                  <MyPhoneInput error={errors.phone ? true : false} />
+                render={({ field }) => (
+                  <MyPhoneInput
+                    onChangeController={field.onChange}
+                    error={errors.phone ? true : false}
+                  />
                 )}
               />
             </div>
