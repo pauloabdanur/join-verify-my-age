@@ -12,6 +12,9 @@ import { userSchema } from '@/schemas/UserSchema';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 interface IFormData {
   name: string;
@@ -21,7 +24,11 @@ interface IFormData {
   checkbox: boolean;
 }
 
-export default function Home() {
+const SignUp = () => {
+  const [visible, setVisible] = useState(false);
+
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -36,10 +43,9 @@ export default function Home() {
       phone: data.phone,
     };
 
-    alert(JSON.stringify(userInfo));
+    router.push('/success');
+    // alert(JSON.stringify(userInfo));
   };
-
-  console.log(errors.phone);
 
   return (
     <div className={styles.container}>
@@ -116,11 +122,17 @@ export default function Home() {
               }
             >
               <input
-                type="password"
+                type={visible ? 'text' : 'password'}
                 placeholder="Please Type in..."
                 {...register('password', { required: true })}
               />
               <span>Password</span>
+              <div
+                className={styles.eyeButton}
+                onClick={() => setVisible(!visible)}
+              >
+                {visible ? <FaEyeSlash /> : <FaEye />}
+              </div>
             </div>
           </div>
           <div
@@ -151,4 +163,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default SignUp;
