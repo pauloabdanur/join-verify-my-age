@@ -30,7 +30,7 @@
   color: red;
 }
 
-.inputBox span {
+.inputLabel {
   position: absolute;
   left: 0;
   margin-left: 15px;

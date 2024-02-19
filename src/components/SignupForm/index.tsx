@@ -43,7 +43,7 @@ const SignupForm = () => {
               placeholder="Please Type in..."
               {...register('name', { required: true })}
             />
-            <span>Full Name</span>
+            <span className={styles.inputLabel}>Full Name</span>
           </div>
           <div
             className={
@@ -57,7 +57,7 @@ const SignupForm = () => {
               placeholder="Please Type in..."
               {...register('email', { required: true })}
             />
-            <span>Email</span>
+            <span className={styles.inputLabel}>Email</span>
           </div>
           <div
             className={
@@ -66,7 +66,7 @@ const SignupForm = () => {
                 : styles.inputBox
             }
           >
-            <span>Mobile</span>
+            <span className={styles.inputLabel}>Mobile</span>
             <Controller
               name="phone"
               control={control}
@@ -91,7 +91,7 @@ const SignupForm = () => {
               placeholder="Please Type in..."
               {...register('password', { required: true })}
             />
-            <span>Password</span>
+            <span className={styles.inputLabel}>Password</span>
             <div
               className={styles.eyeButton}
               onClick={() => setVisible(!visible)}

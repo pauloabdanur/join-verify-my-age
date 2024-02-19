@@ -41,9 +41,6 @@ const MyPhoneInput = ({ onChangeController, error }: Props) => {
           color: '#121212',
           height: '50px',
         }}
-        dropdownStyle={{
-          textOverflow: 'ellipsis',
-        }}
         buttonStyle={{
           borderRadius: '2rem',
           background: 'none',
