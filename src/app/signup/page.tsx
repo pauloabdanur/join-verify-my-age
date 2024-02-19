@@ -37,14 +37,11 @@ const SignUp = () => {
   } = useForm<IFormData>({ resolver: yupResolver(userSchema) });
 
   const submit = (data: IFormData) => {
-    const userInfo = {
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
-    };
-
     router.push('/success');
-    // alert(JSON.stringify(userInfo));
+  };
+
+  const alertSignIn = () => {
+    alert('Sign In page is under development!');
   };
 
   return (
@@ -152,10 +149,10 @@ const SignUp = () => {
             </p>
           </div>
           <div className={styles.buttonWrapper}>
-            <button className={styles.saveBtn} type="submit">
+            <button className={styles.saveBtn} type="submit" name="saveBtn">
               Save
             </button>
-            <button className={styles.signinBtn}>
+            <button className={styles.signinBtn} onClick={alertSignIn}>
               Got a VerifyMyAge Acconut? Sign in
             </button>
           </div>
