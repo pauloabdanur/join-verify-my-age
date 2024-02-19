@@ -1,0 +1,104 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  gap: 12px;
+}
+
+.inputBox {
+  position: relative;
+  width: 500px;
+}
+
+.inputBox input {
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 2rem;
+  border: 1px solid #777777;
+  outline: none;
+
+  font-size: 16px;
+  font-weight: 300;
+  color: #121212;
+}
+
+.inputBoxError input {
+  border: 1px solid red;
+}
+
+.inputBoxError span {
+  color: red;
+}
+
+.inputBox span {
+  position: absolute;
+  left: 0;
+  margin-left: 15px;
+  margin-top: -5px;
+  padding: 0 4px;
+  pointer-events: none;
+  font-size: 12px;
+  font-weight: 600;
+  background: #fff;
+  z-index: 1;
+}
+
+.eyeButton {
+  position: absolute;
+  margin-top: -33px;
+  right: 25px;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.terms {
+  margin-top: 29px;
+  display: flex;
+  align-items: center;
+}
+
+.termsError {
+  color: red;
+}
+
+.terms input {
+  margin-right: 16px;
+  height: 24px;
+  width: 24px;
+  border-radius: 0.3rem;
+  background-color: white;
+  vertical-align: middle;
+  border: 1px solid #777777;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.terms input:checked {
+  background-color: #fbc81d;
+  border: 1px solid #fbc81d;
+}
+
+.terms input:checked::after {
+  content: '\2713';
+  color: #121212;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.terms p {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.terms span {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.buttonWrapper {
+  margin-top: 60px;
+  display: flex;
+  gap: 20px;
+}

@@ -1,0 +1,12 @@
+.saveBtn {
+  height: 70px;
+  width: 119px;
+  padding: 28px 30px;
+  background-color: #fbc81d;
+  border: none;
+  border-radius: 2rem;
+  font-size: 14px;
+  font-weight: 600;
+  color: #121212;
+  cursor: pointer;
+}
