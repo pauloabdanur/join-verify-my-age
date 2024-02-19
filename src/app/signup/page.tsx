@@ -15,14 +15,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-
-interface IFormData {
-  name: string;
-  email: string;
-  phone: string;
-  password: string;
-  checkbox: boolean;
-}
+import { IFormData } from '@/interfaces/FormInterface';
 
 const SignUp = () => {
   const [visible, setVisible] = useState(false);
